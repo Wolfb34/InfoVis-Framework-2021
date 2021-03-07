@@ -42,11 +42,11 @@ def metrics():
     heatmap_data["tempo"] = heatmap_data["tempo_01"]
     heatmap_data = heatmap_data.drop(["loudness_01", "tempo_01"], 1)
     heatmap_data = pd.melt(heatmap_data, id_vars=["artists"], var_name=["characteristic"])
-
+    distplot_data = pd.melt(data.distplot_data, id_vars=["artists"], var_name=["characteristic"])
     heatmap_colors = data.heatmap_colors
 
     return render_template("metrics.html", heatmap_data=heatmap_data.to_dict(orient='records'),
-                           heatmap_colors = heatmap_colors.to_dict(orient='records'))
+                           heatmap_colors = heatmap_colors.to_dict(orient='records'), distplot_data = distplot_data.to_dict(orient='records'))
 
 @main.route('/popularity', methods=['GET'])
 def popularity():
