@@ -12,26 +12,16 @@ function createHeatMapPlot() {
         .padding(0.05);
     chart_group_heatmap.append("g")
         .attr("class", "heatmap_x_axis")
-        .attr("transform", "translate(0,0)")
+        .attr("transform", "translate(0,6)")
         .call(d3.axisBottom(x).tickSize(0))
         .select(".domain").remove();
 
 
     chart_group_heatmap.append("g")
         .attr("class", "heatmap_y_axis")
-        .attr("transform", "translate("+width_transform+",-8)")
+        .attr("transform", "translate("+width_transform+",0)")
         .call(d3.axisLeft(y).tickSize(0))
         .select(".domain").remove();
-
-
-    // d3.select(".heatmap_y_axis").selectAll(".tick")
-    //   .data(pop_map)
-    //   .append("rect")
-    //   .attr("x", "-40")
-    //   .attr("y", "10")
-    //   .attr("width", function(d) { return x_pop(d.value)})
-    //   .attr("height", "20")
-    //   .style("fill", spotifyColor);
 
 
     // Build color scale
@@ -85,7 +75,6 @@ function createHeatMapPlot() {
     var pop_map = d3.map(popularity);
     var x_pop = d3.scaleLinear().range([0, 75]).domain([0, 100]);
 
-    // console.log(pop_map)
     for (var pop_artist in popularity) {
         d3.select(".heatmap_y_axis").selectAll(".tick")
           .filter(function(d) { return d === pop_artist})
@@ -114,28 +103,24 @@ function createHeatMapPlot() {
     }
 
     // add the squares
-    let squares = chart_group_heatmap.selectAll()
+    chart_group_heatmap.selectAll()
         .data(heatmap_data, function(d) {return d.characteristic+':'+d.artists;})
         .enter()
         .append("rect")
             .attr("class", "heatmap_rect")
             .attr("x", function(d) { return x(d.characteristic) })
-            .attr("y", function(d) { return y(d.artists) })
+            .attr("y", function(d) { return y(d.artists) +8 })
             .attr("rx", 4)
             .attr("ry", 4)
             .attr("width", x.bandwidth() )
             .attr("height", y.bandwidth() )
-            //.style("fill", function(d) { return myColor(d.characteristic, d.value)} )
+            .style("opacity", 1)
             .style("fill", function(d) { return myColor(d.value)} )
-            .style("opacity", 0)
         .on("mouseover", mouseover)
         .on("mousemove", mousemove)
         .on("mouseleave", mouseleave)
 
-    squares.transition()
-        .duration(1000)
-        .delay(function(d,i) { return Math.random() * 1200 } )
-        .style("opacity", 1)
+
 
 
     //HEATMAP LEGEND
@@ -200,8 +185,8 @@ function createHeatMapPlot() {
               .attr("y", "7.5")
               .attr("dy", "0.1em")
               .attr("fill", "CurrentColor")
-              .style("font-size", "70%")
-              .html("0%");
+              .style("font-size", "60%")
+              .html("0");
 
     legend_pop = chart_group_pop_legend.append("g")
     legend_pop.append("rect")
@@ -216,7 +201,7 @@ function createHeatMapPlot() {
             .attr("y", "22.5")
             .attr("dy", "0.1em")
             .attr("fill", "CurrentColor")
-            .style("font-size", "70%")
-            .html("100%");
+            .style("font-size", "60%")
+            .html("100");
 
 }

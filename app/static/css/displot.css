@@ -1,0 +1,87 @@
+.displot_x_axis {
+    color: #fff;
+    opacity: 1;
+}
+
+.displot_y_axis {
+    color: #fff;
+    opacity: 1;
+}
+
+.displot_y_axis > .tick {
+    display: none;
+}
+
+.displot_x_axis line {
+
+}
+
+.displot_y_text{
+    font-size: 10px;
+    fill: #ffffff;
+    text-anchor: middle;
+}
+
+.displot_line {
+    stroke-width: 1;
+    stroke-linejoin: round;
+    stroke: #6c757d;
+    opacity: .5;
+}
+
+.displot_area_fill {
+    fill: #6c757d;
+    opacity: 1;
+    stroke-width: 0
+}
+
+.displot_y_axis g text {
+  display: none;
+}
+
+.displot_x_axis g text {
+  display: none;
+}
+
+.slider text {
+  display: none;
+}
+
+.slider > line.track-inset {
+    stroke: #262626;
+}
+
+.slider > line.track-fill {
+    stroke: #1ED760;
+}
+
+.slider > .parameter-value {
+    cursor: pointer;
+}
+
+.axis text {
+  fill: #e00101;
+}
+.axis text,
+.slider text {
+  font-size: 8px;
+}
+.distplot {
+    width:90%;
+    height:auto;
+    margin:0;
+    margin-top: 5px;
+    margin-bottom:10px;
+}
+
+div.slider {
+    width:80%;
+    height:auto;
+    margin:0;
+    margin-bottom: 0px;
+}
+
+#distplot_valence {
+    margin-top: 22%;
+}
+

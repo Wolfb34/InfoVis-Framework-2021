@@ -27,6 +27,11 @@
     display: none;
 }
 
+#barChartAxisTop text {
+    position:absolute;
+    transform: rotate(-10deg) translate3d(0px,0px,1px);
+}
+
 .rowChartAxis line {
     display: none;
 }
@@ -43,8 +48,10 @@
   	/*the container must be positioned relative:*/
   	position: relative;
   	display: inline-block;
+  	text-align: center;
   	margin-top: 15px;
-	margin-left: 30px;
+	margin-left:5px;
+    margin-right:5px;
   	margin-bottom: 10px;
 }
 
